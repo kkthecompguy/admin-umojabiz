@@ -1,0 +1,63 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/9ef181417b.js" crossorigin="anonymous"></script>
+
+    <title>UmojaBiz Administrative Panel</title>
+
+    <style>
+      /* body {
+       background-color: #ebeff5;
+      } */
+      body {
+        background-color: #7cd1c0;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto mt-5">
+          <div class="card card-body mt-5">
+            <h2 class="text-center">LOGIN</h2>
+            {% for message in messages %}
+              <div class="alert alert-danger">
+                {{message}}
+              </div>
+            {% endfor %}
+            <form action="" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                  <input type="text" name="username" id="username" required class="form-control" placeholder="Username">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  <input type="password" name="password" id="password" required class="form-control" placeholder="Password">
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <input type="submit" value="Login" class="btn btn-info btn-sm mt-2">
+                 <p>Don't have an account? <a href="javascript:void(0);">Register</a></p>
+                 <p>Forgot Password?<a href="javascript:void(0);">Reset Password</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,67 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'breadcrumps.html' with current=display %}
+  <div class="row">
+    {% for client in clients %}
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="media mb-3"><img src="{% static 'images/users/user-4.jpg' %}" class="mr-3 thumb-xl align-self-center rounded-circle" alt="...">
+            <div class="media-body align-self-center">
+              <h4 class="mt-0 mb-1">{{client.name}}</h4>
+              <p class="text-muted mb-0 font-12">{{client.email}}</p>
+              <ul class="list-inline mb-0 align-self-center">
+                <li class="list-inline-item m-0"><i class="mdi mdi-star text-warning font-18"></i>
+                </li>
+                <li class="list-inline-item m-0"><i class="mdi mdi-star text-warning font-18"></i>
+                </li>
+                <li class="list-inline-item m-0"><i class="mdi mdi-star text-warning font-18"></i>
+                </li>
+                <li class="list-inline-item m-0"><i class="mdi mdi-star text-warning font-18"></i>
+                </li>
+                <li class="list-inline-item m-0"><i class="mdi mdi-star-half text-warning font-18"></i>
+                </li>
+              </ul>
+            </div>
+            <!--end media body-->
+          </div>
+          <!--end media-->
+          <h4 class="header-title">Client Post This Week</h4>
+          <div class="mb-3">
+            <div id="Agent_1" class="apex-charts"></div>
+          </div>
+          <ul class="list-inline d-flex justify-content-between mb-4">
+            <li class="list-inline-item">
+              <div class="media"><i data-feather="thumbs-up" class="align-self-center icon-lg icon-dual-success"></i>
+                <div class="media-body align-self-center ml-2">
+                  <p class="mb-0"><span class="font-24 font-weight-semibold">87%</span> Satisfied</p>
+                </div>
+                <!--end media body-->
+              </div>
+              <!--end media-->
+            </li>
+            <li class="list-inline-item">
+              <div class="media"><i data-feather="thumbs-down" class="align-self-center icon-lg icon-dual-danger"></i>
+                <div class="media-body align-self-center ml-2">
+                  <p class="mb-0"><span class="font-24 font-weight-semibold">13%</span> Unsatisfied</p>
+                </div>
+                <!--end media body-->
+              </div>
+              <!--end media-->
+            </li>
+          </ul>
+          <p class="text-muted mb-4"><span class="text-dark font-weight-semibold">
+            Last Message :</span> popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature.
+          </p>
+          <div><button type="button" class="btn btn-sm btn-soft-secondary">Send SMS</button> <button type="button" class="btn btn-sm btn-soft-primary">Send Email</button></div>
+        </div>
+        <!--end card-body-->
+      </div>
+      <!--end card-->
+    </div>
+    {% endfor %}
+    <!--end col-->
+  </div>
+{% endblock %}

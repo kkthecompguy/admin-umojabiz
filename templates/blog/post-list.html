@@ -1,0 +1,61 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'breadcrumps.html' with current=blog %}
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <p class="badge badge-soft-pink font-11 p-1 mb-1 float-lg-right float-md-none">Last updated {{updated_at}}</p>
+        <div class="table-responsive browser_users">
+          <table class="table mb-0">
+            <thead class="thead-light">
+              <tr>
+                <th class="border-top-0">Title</th>
+                <th class="border-top-0">Overview</th>
+                <th class="border-top-0">Author </th>
+                <th class="border-top-0">Posted At</th>
+                <th class="border-top-0">Views Count </th>
+                <th class="border-top-0">Anonymous View </th>
+                <th class="border-top-0">Comments count</th>
+                <th class="border-top-0">Action</th>
+              </tr>
+              <!--end tr-->
+            </thead>
+            <tbody>
+              {% for post in object_list %}
+              <tr>
+                <td>
+                  <div class="media">
+                    <div class="media-body align-self-center text-truncate">
+                      <h6 class="mt-0 mb-1 text-dark">{{post.title}}</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>{{post.overview}}</td>
+                <td>{{post.author.featured_author}}</td>
+                <td>{{post.timestamp}}</td>
+                <td>{{post.view_count}}</td>
+                <td>{{post.anonymous_view}}</td>
+                <td>{{post.comment_count}}</td>
+                <td>
+                  <a href="{% url 'blog:post-update' post.pk %}" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a> <a href="{% url 'blog:post-delete' post.pk %}"><i class="fas fa-trash-alt text-danger font-16"></i></a>
+                </td>
+              </tr>
+              {% endfor %}
+              <!--end tr-->
+            </tbody>
+          </table>
+          <!--end table-->
+        </div>
+        <!--end /div-->
+      </div>
+      <!--end card-body-->
+    </div>
+    <!--end card-->
+  </div>
+  <!--end col-->
+</div>
+{% endblock %}

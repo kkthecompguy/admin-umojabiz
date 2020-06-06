@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>UmojaBiz Administrative Panel</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
+  <meta content="" name="author">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {% include 'links.html' %}
+</head>
+
+<body>
+  {% include 'leftbar-tab-menu.html' %}
+
+  {% include 'navbar.html' %}
+
+  <div class="page-wrapper">
+    <div class="page-content-tab">
+      <div class="container-fluid">
+
+        {% block content %}
+        {% endblock %}
+        
+      </div> 
+      {% include 'right-modal-menu.html' %}
+      {% include 'footer.html' %}
+    </div>
+  </div>
+  {% include 'scripts.html' %}
+</body>
+</html>

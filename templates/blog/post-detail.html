@@ -1,0 +1,119 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+  {% include '../breadcrumps.html' with current=blog %}
+  <style>
+    .post-body img {
+      width: 100%;
+      height: 75%;
+    }
+  </style>
+  
+  <div class="row">
+    <!-- Latest Posts -->
+    <main class="col-lg-12"> 
+      <div class="container">
+        <div class="post-single">
+          <div class="post-thumbnail"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></div>
+          <div class="post-details">
+            <div class="post-meta d-flex text-sm-center">
+                {% for cat in post.categories.all %}
+                <span class="badge badge-purple px-3 py-2 bg-soft-secondary font-weight-semibold mt-3">{{ cat }}</span>
+                {% endfor %}
+              <div class="pull-right">
+                {% if request.user.is_staff %}
+                <a href="{% url 'blog:post-update' post.pk %}" class="badge badge-info bg-hard-info font-weight-bold py-2 px-3 mt-3">Update</a>
+                <a href="{% url 'blog:post-delete' post.pk %}" class="badge badge-danger bg-hard-danger font-weight-bold py-2 px-3 mt-3">Delete</a>
+                <a href="{% url 'blog:post-create' %}" class="badge badge-primary bg-hard-primary font-weight-bold py-2 px-3 mt-3">Create</a>
+                {% endif %}
+              </div>
+            </div>
+            <h1>{{ post.title }}</h1>
+            <div class="d-flex justify-content-between">
+              <div class="meta-box">
+                <a href="javascript:void();" class="author d-flex align-items-center flex-wrap">
+                  <div class="media">
+                    <img src="{{ post.author.profile_pic.url }}" alt="..." class="thumb-sm rounded-circle mr-2">
+                  </div>
+                  <div class="title">
+                    <span>{{ post.author }}</span>
+                  </div>
+                </a>
+                <div class="d-flex align-items-center flex-wrap">       
+                  <div class="date px-5">
+                    <i class="icon-clock"></i>{{ post.timestamp|timesince }} ago
+                  </div>
+                  {% if request.user.is_authenticated %}
+                  <div class="views px-3">views
+                    <i class="icon-eye"></i>({{ post.view_count }})
+                  </div>
+                  {% else %}
+                  <div class="views px-4">views
+                    <i class="icon-eye"></i>({{ post.anonymous_view }})
+                  </div>
+                  {% endif %}
+                  <div class="comments meta-last">
+                    <i class="icon-comment"></i> comments({{ post.comment_count }})
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="post-body mt-3">
+              {{ post.content|safe }}
+            </div>
+            <div class="post-tags">
+              {% for cat in post.categories.all %}
+              <a href="javascript:void();" class="tag">#{{ cat }}</a>
+              {% endfor %}
+            </div>
+            <div class="post-comments mt-5">
+              <header>
+                <h3 class="h6">Post Comments<span class="no-of-comments">({{post.comments.count}})</span></h3>
+              </header>
+              {% for comment in post.get_comments %}
+              <div class="comment">
+                <div class="comment-header d-flex justify-content-between">
+                  <div class="user d-flex align-items-center">
+                    <div class="media">
+                      {% if comment.user.author %}
+                      <img src="{{comment.user.author.profile_pic.url}}" alt="..." class="thumb-sm rounded-circle">
+                      {% else %}
+                      <img src="{% static 'img/user.svg' %}" alt="..." class="thumb-sm rounded-circle">
+                      {% endif %}
+                    </div>
+                    <div class="title px-3"><strong>  {{ comment.user }}</strong><span class="date"> {{ comment.timestamp|timesince }} ago</span></div>
+                  </div>
+                </div>
+                <div class="comment-body mt-3">
+                  <p>{{ comment.content }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="add-comment">
+              <header>
+                <h3 class="h6">Leave a reply</h3>
+              </header>
+              <form action="." method="POST" class="commenting-form">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="form-group col-md-12">
+                    {{form.content}}
+                  </div>
+                  <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-secondary">Submit Comment</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            {% else %}
+            <a href="/admin/login" class="btn btn-info">Login To Comment</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% load static %}
+
+<div class="leftbar-tab-menu">
+  <div class="main-icon-menu">
+    <a href="/" class="logo logo-metrica d-block text-center">
+      <span><img src="{% static 'images/logo-sm.png' %}" alt="logo-small" class="logo-sm"></span>
+    </a>
+    <nav class="nav">
+      <a href="#Helpdesk" class="nav-link"  data-placement="right" title="" data-original-title="Helpdesk">
+        <i data-feather="headphones" class="align-self-center menu-icon icon-dual"></i>
+      </a>
+
+      <a href="#Blog" class="nav-link"  data-placement="right" title="" data-original-title="Apps">
+        <i data-feather="grid" class="align-self-center menu-icon icon-dual"></i>
+      </a>
+
+      <a href="#Business" class="nav-link"  data-placement="right" title="" data-original-title="UI Kit">
+        <i data-feather="package"
+          class="align-self-center menu-icon icon-dual"></i>
+        </a>
+
+      <a href="#Jobs" class="nav-link"  data-placement="right" title="" data-original-title="Pages">
+        <i data-feather="copy"
+          class="align-self-center menu-icon icon-dual"></i>
+      </a>
+
+      <a href="#Advert" class="nav-link"  data-placement="right" title="" data-original-title="Pages">
+        <i data-feather="activity"
+          class="align-self-center menu-icon icon-dual"></i>
+      </a>
+
+      <a href="#Authentication" class="nav-link"  data-placement="right" title="" data-original-title="Authentication"><i data-feather="lock" class="align-self-center menu-icon icon-dual"></i>
+      </a>
+    </nav>
+
+    <div class="pro-metrica-end">
+      <a href="#" class="help"  data-placement="right" title="" data-original-title="Chat"><i data-feather="message-circle" class="align-self-center menu-icon icon-md icon-dual mb-4"></i>
+      </a>
+      <a href="#" class="profile">
+        <img src="{% static 'images/users/user-4.jpg' %}" alt="profile-user" class="rounded-circle thumb-sm">
+      </a>
+    </div>
+  </div>
+
+  <div class="main-menu-inner">
+    <div class="topbar-left">
+      <a href="/" class="logo">
+        <span><img src="{% static 'images/logo-dark.png' %}" alt="logo-large" class="logo-lg logo-dark"><img src="{% static 'images/logo.png' %}" alt="logo-large" class="logo-lg logo-light">
+        </span>
+      </a>
+    </div>
+
+    <div class="menu-body slimscroll">
+      <div id="Helpdesk" class="main-icon-menu-pane">
+        <div class="title-box">
+          <h6 class="menu-title">Helpdesk</h6>
+        </div>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:agents' %}">Agents</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:tickets' %}">Tickets</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'core:reports' %}">Reports</a></li>
+        </ul>
+      </div>
+
+      <div id="Blog" class="main-icon-menu-pane">
+        <div class="title-box">
+          <h6 class="menu-title">Blog</h6>
+        </div>
+        <ul class="nav metismenu">
+          <li class="nav-item"><a class="nav-link" href="{% url 'blog:post-list' %}">All Post</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'blog:index' %}">Show Summary</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'blog:post-create' %}">Create Post</a></li>
+        </ul>
+      </div>
+
+      <div id="Business" class="main-icon-menu-pane">
+        <div class="title-box">
+          <h6 class="menu-title">Business</h6>
+        </div>
+        <ul class="nav metismenu">
+          <li class="nav-item"><a class="nav-link" href="{% url 'jobs:business' %}">Featured Business</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'jobs:business' %}">Suspended</a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="Jobs" class="main-icon-menu-pane">
+        <div class="title-box">
+          <h6 class="menu-title">JOBS</h6>
+        </div>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="{% url 'jobs:job-posted' %}">From Service Provider</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'jobs:job-index' %}">Crawled Jobs</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'jobs:job-applicants' %}">Applications</a></li>
+        </ul>
+      </div>
+
+      <div id="Advert" class="main-icon-menu-pane">
+        <div class="title-box">
+          <h6 class="menu-title">Adverts</h6>
+        </div>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="{% url 'adverts:advert-list' %}">All Adverts</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'adverts:current' %}">Current Advert</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'adverts:advert-create' %}">Create Advert</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
